@@ -27,6 +27,23 @@ namespace Product_Review
                 Console.WriteLine("------------------------------------------------------------------------------------------------");
             }
         }
+        public void SelectRecords(List<Productreview> listproductreview)
+        {
+            var ProductData = from Productreviews in listproductreview
+                               where (Productreviews.ProductID==1 || Productreviews.ProductID==4 || Productreviews.ProductID==9)
+                               && Productreviews.Rating>3
+                               select Productreviews;
+
+            Console.WriteLine("Retrieving Record Who's Rating Greater Then 3 :");
+
+            foreach (var list in ProductData)
+            {
+                Console.WriteLine("ProductID:-" + list.ProductID + " " + "UserID:-" + list.UserID + " " + "Rating:-" + list.Rating + " " +
+                                     "Review:-" + list.Review + " " + "is_Like:-" + list.is_Like);
+                Console.WriteLine("------------------------------------------------------------------------------------------------");
+            }
+
+        }
 
     }
 }
