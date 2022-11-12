@@ -10,6 +10,7 @@ namespace Product_Review
     public class Management
     {
         public readonly DataTable datatable = new DataTable();
+        private object x;
 
         //creating a method
         public void Top3Records(List<Productreview>listproductreview)
@@ -45,5 +46,16 @@ namespace Product_Review
 
         }
 
+        public void RereieveCountOfRecords(List<Productreview> listproductreview)
+        {
+            var ProductData = listproductreview.GroupBy (x => x.ProductID).Select( x=> new { ProductID = x.Key, Count=x.Count() });
+
+            foreach (var list in ProductData)
+            {
+                Console.WriteLine(list.ProductID+"------"+list.Count);
+                Console.WriteLine("------------------------------------------------------------------------------------------------");
+            }
+
+        }
     }
 }
